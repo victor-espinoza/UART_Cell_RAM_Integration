@@ -8,5 +8,30 @@
 <!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.    -->
 
 <messages>
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Victor Espinoza/Documents/Long Beach/Victor&apos;s Projects To Upload/Fall 2015/CECS 460/Lab 5 - Cell RAM/MemoryInterface/src/cellram.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">C:/Users/Victor Espinoza/Documents/Long Beach/Victor&apos;s Projects To Upload/Fall 2015/CECS 460/Lab 5 - Cell RAM/MemoryInterface/src/cellram.v</arg>&quot; Line <arg fmt="%d" index="2">105</arg>. <arg fmt="%s" index="3">Include file found: &apos;C:/Users/Victor Espinoza/Documents/Long Beach/Victor&apos;s Projects To Upload/Fall 2015/CECS 460/Lab 5 - Cell RAM/MemoryInterface/cellram_parameters.vh&apos; in file &quot;C:/Users/Victor Espinoza/Documents/Long Beach/Victor&apos;s Projects To Upload/Fall 2015/CECS 460/Lab 5 - Cell RAM/MemoryInterface/src/cellram.v&quot; line 105
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">C:/Users/Victor Espinoza/Documents/Long Beach/Victor&apos;s Projects To Upload/Fall 2015/CECS 460/Lab 5 - Cell RAM/MemoryInterface/src/cellram.v</arg>&quot; Line <arg fmt="%d" index="2">1349</arg>. <arg fmt="%s" index="3">Include file found: &apos;C:/Users/Victor Espinoza/Documents/Long Beach/Victor&apos;s Projects To Upload/Fall 2015/CECS 460/Lab 5 - Cell RAM/MemoryInterface/cellram_parameters.vh&apos; in file &quot;C:/Users/Victor Espinoza/Documents/Long Beach/Victor&apos;s Projects To Upload/Fall 2015/CECS 460/Lab 5 - Cell RAM/MemoryInterface/src/cellram.v&quot; line 1349
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Victor Espinoza/Documents/Long Beach/Victor&apos;s Projects To Upload/Fall 2015/CECS 460/Lab 5 - Cell RAM/MemoryInterface/src/proj5_Memory_Interface.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Victor Espinoza/Documents/Long Beach/Victor&apos;s Projects To Upload/Fall 2015/CECS 460/Lab 5 - Cell RAM/MemoryInterface/src/tb.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">C:/Users/Victor Espinoza/Documents/Long Beach/Victor&apos;s Projects To Upload/Fall 2015/CECS 460/Lab 5 - Cell RAM/MemoryInterface/src/tb.v</arg>&quot; Line <arg fmt="%d" index="2">9</arg>. <arg fmt="%s" index="3">Include file found: &apos;C:/Users/Victor Espinoza/Documents/Long Beach/Victor&apos;s Projects To Upload/Fall 2015/CECS 460/Lab 5 - Cell RAM/MemoryInterface/cellram_parameters.vh&apos; in file &quot;C:/Users/Victor Espinoza/Documents/Long Beach/Victor&apos;s Projects To Upload/Fall 2015/CECS 460/Lab 5 - Cell RAM/MemoryInterface/src/tb.v&quot; line 9
+</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">C:/Users/Victor Espinoza/Documents/Long Beach/Victor&apos;s Projects To Upload/Fall 2015/CECS 460/Lab 5 - Cell RAM/MemoryInterface/src/tb.v</arg>&quot; Line <arg fmt="%d" index="2">465</arg>. <arg fmt="%s" index="3">Include file found: &apos;C:/Users/Victor Espinoza/Documents/Long Beach/Victor&apos;s Projects To Upload/Fall 2015/CECS 460/Lab 5 - Cell RAM/MemoryInterface/subtest.vh&apos; in file &quot;C:/Users/Victor Espinoza/Documents/Long Beach/Victor&apos;s Projects To Upload/Fall 2015/CECS 460/Lab 5 - Cell RAM/MemoryInterface/src/tb.v&quot; line 465
+</arg>
+</msg>
+
 </messages>
 

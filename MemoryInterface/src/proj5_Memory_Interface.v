@@ -95,7 +95,7 @@
 //                to the output of the IOBUF. The read data in registers are 
 //                updated with the correct values located inside of the rdDataIn 
 //                16-bit wire once a Read operation has finished executing in 
-//                the Memory. 
+//                the Memory.
 //
 // Dependencies: 
 //
