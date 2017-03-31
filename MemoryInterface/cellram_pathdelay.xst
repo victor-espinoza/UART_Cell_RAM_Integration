@@ -1,0 +1,5 @@
+set -tmpdir "F:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/xst/projnav.tmp"
+set -xsthdpdir "F:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/xst"
+elaborate
+-ifn cellram_pathdelay.prj
+-ifmt mixed

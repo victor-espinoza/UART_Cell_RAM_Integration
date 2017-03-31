@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=E:\CECS 460\Labs\Lab 5 - Cell RAM\MemoryInterface\proj5_Memory_Interface.ncd
+OUTFILE=E:\CECS 460\Labs\Lab 5 - Cell RAM\MemoryInterface\proj5_Memory_Interface.bit
+FAMILY=Spartan3E
+PART=xc3s500e-4fg320
+WORKINGDIR=E:\CECS 460\Labs\Lab 5 - Cell RAM\MemoryInterface
+LICENSE=WebPack
+USER_INFO=210745770_0_0_556

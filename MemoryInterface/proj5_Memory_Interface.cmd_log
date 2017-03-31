@@ -1,0 +1,297 @@
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+netgen -intstyle ise -insert_glbl true -w -dir netgen/synthesis -ofmt verilog -sim proj5_Memory_Interface.ngc proj5_Memory_Interface_synthesis.v 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 
+xst -intstyle ise -ifn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.xst" -ofn "E:/CECS 460/Labs/Lab 5 - Cell RAM/MemoryInterface/proj5_Memory_Interface.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc IOPinAssignments.ucf -p xc3s500e-fg320-4 "proj5_Memory_Interface.ngc" proj5_Memory_Interface.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ngd proj5_Memory_Interface.pcf 
+par -w -intstyle ise -ol high -t 1 proj5_Memory_Interface_map.ncd proj5_Memory_Interface.ncd proj5_Memory_Interface.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml proj5_Memory_Interface.twx proj5_Memory_Interface.ncd -o proj5_Memory_Interface.twr proj5_Memory_Interface.pcf -ucf IOPinAssignments.ucf 
+bitgen -intstyle ise -f proj5_Memory_Interface.ut proj5_Memory_Interface.ncd 

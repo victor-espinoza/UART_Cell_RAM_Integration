@@ -1,0 +1,102 @@
+//Set the appropriate step and rstb
+//clk input
+NET "clk"        LOC="B8";
+
+//button inputs
+NET "rstb"	     LOC="B18";
+NET "tx"         LOC="P9";
+NET "Rx"         LOC="U6";
+//NET "rx"         LOC="V6";
+#NET "parity_en"  LOC="N17";
+#NET "odd_n_even" LOC="L13";
+#NET "bit8"       LOC="L14";
+NET "bit8"        LOC="N17";
+NET "parity_en"   LOC="L13";
+NET "odd_n_even"  LOC="L14";
+NET "baud_val[3]" LOC="K17";
+NET "baud_val[2]" LOC="K18";
+NET "baud_val[1]" LOC="H18";
+NET "baud_val[0]" LOC="G18";
+
+
+
+//annode and cathode info for the 7
+//segment display
+NET "a3" 	 				LOC="F15";
+NET "a2" 	 				LOC="C18";
+NET "a1" 	 				LOC="H17";
+NET "a0" 	 				LOC="F17";
+
+
+NET "a"    	 				LOC= "L18";
+NET "b"   	 				LOC= "F18";
+NET "c"    	 				LOC= "D17";
+NET "d"   	 				LOC= "D16";
+NET "e"   	 				LOC= "G14";
+NET "f"   	 				LOC= "J17";
+NET "g"   	 				LOC= "H14";
+
+
+
+NET "LED[7]"    	 		LOC= "R4";
+NET "LED[6]"   	 		LOC= "F4";
+NET "LED[5]"    	 		LOC= "P15";
+NET "LED[4]"   	 		LOC= "E17";
+NET "LED[3]"   	 		LOC= "K14";
+NET "LED[2]"   	 		LOC= "K15";
+NET "LED[1]"   	 		LOC= "J15";
+NET "LED[0]"   	 		LOC= "J14";
+
+//micron memory pin assignments
+NET "memWriteAddr[22]"  LOC= "K6";
+NET "memWriteAddr[21]"  LOC= "D1";
+NET "memWriteAddr[20]"  LOC= "K3";
+NET "memWriteAddr[19]"  LOC= "D2";
+NET "memWriteAddr[18]"  LOC= "C1";
+NET "memWriteAddr[17]"  LOC= "C2";
+NET "memWriteAddr[16]"  LOC= "E2";
+NET "memWriteAddr[15]"  LOC= "M5";
+NET "memWriteAddr[14]"  LOC= "E1";
+NET "memWriteAddr[13]"  LOC= "F2";
+NET "memWriteAddr[12]"  LOC= "G4";
+NET "memWriteAddr[11]"  LOC= "G5";
+NET "memWriteAddr[10]"  LOC= "G6";
+NET "memWriteAddr[9]"   LOC= "G3";
+NET "memWriteAddr[8]"   LOC= "F1";
+NET "memWriteAddr[7]"   LOC= "H6";
+NET "memWriteAddr[6]"   LOC= "H3";
+NET "memWriteAddr[5]"   LOC= "J5";
+NET "memWriteAddr[4]"   LOC= "H2";
+NET "memWriteAddr[3]"   LOC= "H1";
+NET "memWriteAddr[2]"   LOC= "H4";
+NET "memWriteAddr[1]"   LOC= "J2";
+NET "memWriteAddr[0]"   LOC= "J1";
+
+
+NET "memoryData[15]"   	LOC= "T1";
+NET "memoryData[14]"   	LOC= "R3";
+NET "memoryData[13]"   	LOC= "N4";
+NET "memoryData[12]"   	LOC= "L2";
+NET "memoryData[11]"   	LOC= "M6";
+NET "memoryData[10]"   	LOC= "M3";
+NET "memoryData[9]"    	LOC= "L5";
+NET "memoryData[8]"    	LOC= "L3";
+NET "memoryData[7]"    	LOC= "R2";
+NET "memoryData[6]"    	LOC= "P2";
+NET "memoryData[5]"    	LOC= "P1";
+NET "memoryData[4]"    	LOC= "N5";
+NET "memoryData[3]"    	LOC= "M4";
+NET "memoryData[2]"    	LOC= "L6";
+NET "memoryData[1]"    	LOC= "L4";
+NET "memoryData[0]"    	LOC= "L1";
+
+
+
+NET "MT_CLK"    			LOC= "H5";
+NET "MT_ADV"    			LOC= "J4";
+NET "MT_UB"     			LOC= "K4";
+NET "MT_LB"     			LOC= "K5";
+NET "MT_OE"     			LOC= "T2";
+NET "MT_WE"     			LOC= "N7";
+NET "MT_CE"     			LOC= "R6";
+NET "MT_CRE"     			LOC= "P7";
