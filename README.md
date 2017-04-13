@@ -40,6 +40,749 @@ Memory Interface Block Diagram:
 I also connected a Seven-Segment Display in my design so that I can view the data being recieved by the PicoBlaze and see how many characters are displayed on the serial window line. For the sake of simplicity, however, I am not including this block in my top-level block diagram because it is trivial and does not contribute to the overall completion of the project.
 
 Project Assembly Code:     
+   
+             ;Memory Interface
+             ;
+             ;================================================================
+             ; data constants
+             ;================================================================
+             ;selected ASCII codes
+             CONSTANT ASCII_CR , 0D                ; carriage return <CR>
+             CONSTANT ASCII_LF , 0A                ; line feed <LF>
+             CONSTANT ASCII_Space , 20             ; Space 
+             CONSTANT ASCII_Asterisk , 2A          ; *(Asterisk) character
+             CONSTANT ASCII_Greater_Than, 3E       ; >(Greater Than) character  
+             CONSTANT ASCII_bslash , 2F            ; /(Backslash) character
+             CONSTANT ASCII_colon , 3A             ; :(colon) character
+             CONSTANT ASCII_comma , 2C             ; ,(comma) character
+             CONSTANT ASCII_dash , 2D              ; -(dash) character
+             CONSTANT ASCII_exclamation , 21       ; !(exclamation point) character
+             CONSTANT ASCII_backspace , 08         ; BS(backspace) character
+             CONSTANT ASCII_delete , 7F            ; DEL(descructive delete) 
+             CONSTANT ASCII_pound , 23             ;#(pound sign) 
+
+             CONSTANT ASCII_C_U , 43               ; Uppercase C
+             CONSTANT ASCII_E_U , 45               ; Uppercase E
+             CONSTANT ASCII_S_U , 53               ; Uppercase S
+             CONSTANT ASCII_4 , 34                 ; number 4
+             CONSTANT ASCII_6 , 36                 ; number 6
+             CONSTANT ASCII_0 , 30                 ; number 0
+
+             CONSTANT ASCII_V_U , 56               ; Uppercase V
+             CONSTANT ASCII_i , 69                 ; Lowercase i
+             CONSTANT ASCII_c , 63                 ; Lowercase c
+             CONSTANT ASCII_t , 74                 ; Lowercase t
+             CONSTANT ASCII_o , 6F                 ; Lowercase o
+             CONSTANT ASCII_r , 72                 ; Lowercase r
+             CONSTANT ASCII_s , 73                 ; Lowercase s
+             CONSTANT ASCII_p , 70                 ; Lowercase p
+             CONSTANT ASCII_n , 6E                 ; Lowercase n
+             CONSTANT ASCII_z , 7A                 ; Lowercase z
+             CONSTANT ASCII_a , 61                 ; Lowercase a
+
+
+             CONSTANT ASCII_F_U , 46               ; Uppercase F
+             CONSTANT ASCII_u , 75                 ; Lowercase u
+             CONSTANT ASCII_l , 6C                 ; Lowercase l
+             CONSTANT ASCII_U_U , 55               ; Uppercase U
+             CONSTANT ASCII_A_U , 41               ; Uppercase A
+             CONSTANT ASCII_R_U , 52               ; Uppercase R
+             CONSTANT ASCII_T_U , 54               ; Uppercase T
+
+             CONSTANT ASCII_D_U , 44               ; Uppercase D
+             CONSTANT ASCII_e , 65                 ; Lowercase e
+             CONSTANT ASCII_1 , 31                 ; number 1
+             CONSTANT ASCII_8 , 38                 ; number 8
+             CONSTANT ASCII_5 , 35                 ; number 5
+             CONSTANT ASCII_2 , 32                 ; number 2
+
+             CONSTANT ASCII_H_U , 48               ; Uppercase H
+             CONSTANT ASCII_m , 6D                 ; Lowercase m
+             CONSTANT ASCII_w , 77                 ; Lowercase w
+             CONSTANT ASCII_P_U , 50               ; Uppercase P
+             CONSTANT ASCII_v , 76                 ; Lowercase v
+
+             CONSTANT ASCII_I_U , 49               ; Uppercase I
+             CONSTANT ASCII_Y_U , 59               ; Uppercase Y
+             CONSTANT ASCII_O_U , 4F               ; Uppercase O
+             CONSTANT ASCII_L_U , 4C               ; Uppercase L
+             CONSTANT ASCII_W_U , 57               ; Uppercase W
+
+
+             CONSTANT ASCII_M_U , 4D               ; Uppercase M
+             CONSTANT ASCII_y, 79                  ; Lowercase y
+             CONSTANT ASCII_f , 66                 ; Lowercase f
+
+
+             ;================================================================
+             ; port aliases
+             ;================================================================
+             ;____________________________input port definitions_____________________
+              
+             CONSTANT rd_flag_port, 00       ;status of transmit engine
+             CONSTANT rx_data_port, 01       ;received data from receive engine
+             CONSTANT wr_addr_reg0, 11       ;Write Address Register 0
+             CONSTANT wr_addr_reg1, 12       ;Write Address Register 1
+             CONSTANT wr_addr_reg2, 13       ;Write Address Register 2
+             CONSTANT wr_data_reg0, 14       ;Write Data Out Register 0
+             CONSTANT wr_data_reg1, 15       ;Write Data Out Register 1
+             CONSTANT rd_data_reg0, 16       ;Read Data In Register 0
+             CONSTANT rd_data_reg1, 17       ;Read Data In Register 0
+             CONSTANT mem_read, 18           ;Perform Memory Read
+             CONSTANT mem_write, 19          ;Perform Memory Write
+             CONSTANT MIB_Status, 1A         ;Read in Memory Interface Status	
+             NAMEREG s0, tx_data             ;data to be transmitted by uart
+             NAMEREG s2, rx_data             ;data to be received by uart
+             NAMEREG s3, char_counter        ;keeps track of how many characters have been
+                                             ;transmitted on the current line (for destructive 
+                                             ;delete)
+             NAMEREG s6, mem_addr_0          ;memory address for Micron Memory
+             NAMEREG s7, mem_addr_1          ;memory address for Micron Memory
+             NAMEREG s8, mem_addr_2          ;memory address for Micron Memory
+             NAMEREG s9, mem_addr_read0      ;transmitting data received from memory
+             NAMEREG sA, mem_addr_read1      ;transmitting data received from memory
+             NAMEREG sB, mem_addr_read2      ;transmitting data received from memory
+             NAMEREG sC, mem_range_selector  ;memory range selector
+
+             ;____________________________output port definitions____________________
+
+             CONSTANT uart_tx_port, 01    ;outputs to register 1 (Write_Strobe[1])
+
+             ;================================================================
+             ; Main Program
+             ;================================================================
+             main_program: 
+                    load mem_range_selector, 00     ;zero out mem_range_selector
+                    load char_counter, 00           ;zero out the character counter
+                    call zero_out_mem               ;zero out memory locations 0x0 - 0x200
+                    load mem_addr_0, 00             ;zero out memory address
+                    load mem_addr_1, 00             ;zero out memory address
+                    load mem_addr_2, 00             ;zero out memory address
+                    load mem_addr_read0, 00         ;zero out counter for memory address
+                    load mem_addr_read1, 00         ;zero out counter for memory address
+                    load mem_addr_read2, 00         ;zero out counter for memory address
+                    call display_banner             ;Display the banner at the beginning of the program
+
+             infinite_loop: 
+                    call proc_uart ;receive uart characters
+                    JUMP infinite_loop
+
+
+             ;================================================================
+             ; routine : check_status_flags
+             ;       function : check the status flags of the UART engine and inform the user of
+             ;                  any errors that have occurred (parity, overflow)
+             ;       Input Register :  s1 - read port flags
+             ;       Temp Register :   s5 - check for parity/overflow error
+             ;      Output Register : tx_data (s0) - data to be transmitted by uart
+             ;================================================================     
+             check_status_flags:   
+                    load s5, s1                      ;copy status register value into s5
+                    and s5, 20                       ;isolate overflow bit
+	               sub s5, 20                       ;check to see if Overflow bit is set high
+                    jump nz, check_parity_errror     ;if it isn't, check the parity error flag
+                    call display_overflow_error      ;display overflow error
+                    jump done_error_checking         ;jump to the end of the error checking          
+             check_parity_errror :   
+                    load s5, s1                      ;copy status register value into s5
+                    and s5, 10                       ;isolate parity error bit
+	               sub s5, 10                       ;check to see if Parity Error bit is set high
+                    jump nz, done_error_checking     ;if it isn't, jump to the end of the error checking
+                    call display_pairty_error        ;display overflow error
+             done_error_checking:  
+                    return                 
+
+
+             ;================================================================
+             ; routine : tx_one_byte
+             ;       function : Wait until uart TxRdy bit is set, which signifies that the UART is
+             ;                  ready to transmit another byte. Then transmit another byte to
+             ;                  the UART.
+             ;       Input Register :    s1 - read port flags
+             ;      Output Register : tx_data (s0) - data to be transmitted by uart
+             ;================================================================     
+             tx_one_byte :
+                    input s1, rd_flag_port             ;read in status of the Transmit Engine
+                    call check_status_flags            ;check for overflow/parity errors
+                    and s1, 02                         ;isolate TxRdy bit 
+	               sub s1, 02                         ; check to see if TxRdy bit is set high
+                    jump nz, tx_one_byte               ;if it isn't, keep on waiting until it is set high
+                    output tx_data, uart_tx_port       ;If it is set high, then transmit byte to uart
+                    compare tx_data, ASCII_delete      ;check to see if data is a destructive delete
+                    jump nz, increment_counter         
+                    sub char_counter, 01               ;decrement character counter
+                    jump done_updating_counter    
+             increment_counter:	
+                    add char_counter, 01               ;increment character counter
+             done_updating_counter:
+                    output char_counter, 05            ;output character counter value
+                    return
+
+
+             ;================================================================
+             ; routine: proc_uart
+             ;       function : receive UART input character and process it:
+             ;                  CR - transmit a new line (CR/LF) and prompt
+             ;                  LF - transmit a new line (CR/LF) and prompt
+             ;                  * - Dumps the memory that has been written to and displays it
+             ;                      on the terminal window.
+             ;                  # - Displays the designer's hometown (Porterville, CA)
+             ;                  other - echo character
+             ;                  every received character is also saved to Micron Memory
+             ;       Input Register :   rx_data(s2) - received data, 
+             ;                                      s1 - read port flags, 
+             ;                                      s4, MIB_Status 
+             ;      Output Register : tx_data (s0) - data to be transmitted by uart 
+             ;                        mem_addr_read0 - address [7:0] used while dumping memory 
+             ;                        mem_addr_read1 - address [15:8] used while dumping memory 
+             ;                        mem_addr_read2 - address [23:16] used while dumping memory 
+             ;                        sD - used to output a value of 00 to controller
+             ;                        mem_addr_0 - current address [7:0] of memory
+             ;                        mem_addr_1 - current address [15:8] of memory
+             ;                        mem_addr_2 - current address [23:16] of memory
+             ;                        rx_data
+             ;================================================================
+             proc_uart:
+                    input rx_data ,  rx_data_port      ;receive data from terminal
+             receive_byte:
+                    input s1, rd_flag_port             ;read in status of the Receive Engine
+                    call check_status_flags            ;check for overflow/parity errors
+                    and s1, 01                         ;isolate RxRdy bit 
+	               sub s1, 01                         ; check to see if RxRdy bit is set high
+                    jump nz, receive_byte              ;if it isn't, keep on waiting until it is set high
+	               input rx_data ,  rx_data_port      ;store received data in register
+	               compare rx_data, ASCII_pound       ;see if pound sign was received
+	               jump nz, compare_cr                ;if not, check for carriage return
+	               call transmit_hometown             ;transmit hometown
+                    call new_prompt                    ;start a new line
+                    jump  uart_receive_byte_done       ;jump to store character in memory
+             compare_cr:
+	               compare rx_data, ASCII_CR          ;see if carriage return was received
+	               jump nz, compare_lf                ;if not, check for line feed
+	               call new_prompt                    ;trigger the newline prompt
+                    jump   save_cr
+             compare_lf:
+                    compare rx_data, ASCII_LF          ;see if line feed was received
+	               jump nz, compare_asterisk          ;if not, check for asterisk
+	               call new_prompt                    ;trigger the newline prompt
+                    jump   save_cr
+             compare_asterisk:
+                    compare rx_data, ASCII_Asterisk    ;see if asterisk was received
+                    jump nz, compare_backspace         ;if not, check for backspace
+                    load tx_data , ASCII_CR
+                    call tx_one_byte                   ; transmit CR (Carriage Return)
+                    load tx_data , ASCII_LF
+                    call tx_one_byte                   ; transmit LF (Line Feed)
+                    load mem_addr_read0, 00            ;zero out counter for memory address read
+                    load mem_addr_read1, 00            ;zero out counter for memory address read
+                    load mem_addr_read2, 00            ;zero out counter for memory address read
+             begin_mem_rd:
+	               output mem_addr_read0 , wr_addr_reg0  ;output [7:0] of memory address
+	               output mem_addr_read1 , wr_addr_reg1  ;output[15:8] of memory address
+	               output mem_addr_read2 , wr_addr_reg2  ;output [23:16] of memory address
+                    compare mem_range_selector, 01        ;see up to what memory address to display to
+                    jump nz, mem_adr_limit                ;if not, check for backspace
+                    compare mem_addr_read0, 02            ;see if values match
+                    jump nz, get_next_mem_loc             ;if they don't get byte from memory
+                    compare mem_addr_read1, 02            ;see if values match
+                    jump nz,  get_next_mem_loc            ;if they don't get byte from memory
+	               call new_prompt                       ;trigger the newline prompt
+                    compare mem_addr_read2, 00            ;see if values match
+                    jump z, uart_receive_byte_done        ;if they do, jump to end of process
+                    jump get_next_mem_loc ;
+             mem_adr_limit:
+                    compare mem_addr_read0, mem_addr_0  ;see if values match
+                    jump nz, get_next_mem_loc           ;if they don't get byte from memory
+                    compare mem_addr_read1, mem_addr_1  ;see if values match
+                    jump nz,  get_next_mem_loc          ;if they don't get byte from memory
+	               call new_prompt                     ;trigger the newline prompt
+                    compare mem_addr_read2, mem_addr_2  ;see if values match
+                    load mem_range_selector, 01         ;zero out mem_range_selecto
+                    jump z, uart_receive_byte_done      ;if they do, jump to end of process
+             get_next_mem_loc:
+                    load sD, 00		                ; fill with zero value
+	               output sD, mem_read 	           ;perform memory read
+             perform_memory_read:
+	               input s4, MIB_Status 	        ;read in Memory Interface status			
+                    and s4, 01                       ;isolate RDY bit 
+	               sub s4, 01                       ; check to see if RDY bit is set high
+                    jump nz,  perform_memory_read    ;if it isn't, keep on waiting until it is set high
+	               input tx_data , rd_data_reg0 	   ;Retrieve Read Data In Register 0
+                    call tx_one_byte                 ;transmit data from memory
+	               input tx_data , rd_data_reg1 	   ;Retrieve Read Data In Register 1
+	               call tx_one_byte                 ;transmit data from memory
+                    add  mem_addr_read0, 01          ;Increment memory address
+                    addcy  mem_addr_read1, 00        ;Incremetn memory address
+                    addcy  mem_addr_read2, 00        ;Incremetn memory address
+	               jump  begin_mem_rd	             ;get next memory location
+             compare_backspace:
+                    compare rx_data, ASCII_backspace ;see if backspace was received
+                    jump nz,  compare_delete         ;if not, check for destructive delete
+	               compare char_counter, 04         ;check to see if there are any bits to delete
+                    jump z, done_processing          ;if there are no characters available to delete, do nothing
+	               load rx_data, ASCII_delete       ;load with a destructive delete if backspace pressed
+                    jump  transmit_received_char     ;delete the character
+             compare_delete:
+                    compare rx_data, ASCII_delete   ;see if delete was received
+                    jump nz, echo_character         ;if not, echo character
+	               compare char_counter, 04        ;check to see if there are any bits to delete
+                    jump z, done_processing         ;if there are no characters available to delete, do nothing
+                    jump transmit_received_char     ;transmit the destructive delete
+             echo_character:
+                    compare char_counter, AA         ;check to see if counter limit has been reached
+                    jump nz, transmit_received_char  ;if it isn't, transmit the character
+                    call new_prompt                  ;otherwise start a new line
+             transmit_received_char:
+                    load tx_data , rx_data 
+	               call tx_one_byte                 ; echo received character
+	               jump uart_receive_byte_done;
+             save_cr :
+                    load rx_data, ASCII_CR
+	               jump uart_receive_byte_done ;
+             save_lf :
+                    load rx_data, ASCII_LF
+             uart_receive_byte_done :
+                    load sD, 00		             ; fill with zero value
+	               output mem_addr_0, wr_addr_reg0  ;output [7:0] of memory address
+	               output mem_addr_1, wr_addr_reg1  ;output[15:8] of memory address
+	               output mem_addr_2, wr_addr_reg2  ;output [23:16] of memory address
+	               output rx_data , wr_data_reg0    ;output [7:0] of memory address
+	               output sD, wr_data_reg1  	   ;output [15:8] of memory address
+	               output sD, mem_write 	        ;perform memory write
+             perform_memory_write:
+	               input s4, MIB_Status 	      ;read in Memory Interface status			
+                    and s4, 01                     ;isolate RDY bit 
+	               sub s4, 01                     ; check to see if RDY bit is set high
+                    jump nz, perform_memory_write  ;if it isn't, keep on waiting until it is set high
+                    compare mem_addr_0, 02         ;see if values match
+                    jump nz, increment_mem_addr    ;if they don't get byte from memory
+                    compare mem_addr_1, 02         ;see if values match
+                    jump nz,  increment_mem_addr   ;if they don't get byte from memory
+                    compare mem_addr_2, 00         ;see if values match
+                    jump nz,  increment_mem_addr   ;if they don't get byte from memory
+                    load mem_addr_0, 00            ;roll over to beginning of memory
+                    load mem_addr_1, 00            ;roll over to beginning of memory
+                    load mem_addr_2, 00            ;roll over to beginning of memory
+	               load mem_range_selector, 01    ;display all contents of memory from now on
+                    jump  done_processing          ;jump to end of command		
+             increment_mem_addr :
+                    add mem_addr_0, 01             ;Increment memory address
+                    addcy mem_addr_1, 00           ;Incremetn memory address
+                    addcy mem_addr_2, 00           ;Incremetn memory address
+                    compare rx_data, ASCII_CR      ;see if asterisk was received
+                    jump z, save_lf                ;if not, increment address
+             done_processing :
+                    return
+
+
+             ;================================================================
+             ; routine: zero_out_mem
+             ;       function : writes a value of 0 to all of the memory locations:
+             ;================================================================
+             zero_out_mem: 
+                    load mem_addr_0, 00            	    ;zero out memory address
+                    load mem_addr_1, 00            	    ;zero out memory address
+                    load mem_addr_2, 00           	    ;zero out memory address
+             next_mem_addr:
+                    load sD, 00		             ; fill with zero value
+	               output mem_addr_0, wr_addr_reg0  ;output [7:0] of memory address
+	               output mem_addr_1, wr_addr_reg1  ;output[15:8] of memory address
+	               output mem_addr_2, wr_addr_reg2  ;output [23:16] of memory address
+	               output sD , wr_data_reg0         ;output [7:0] of memory address
+	               output sD, wr_data_reg1  	   ;output [15:8] of memory address
+	               output sD, mem_write 	        ;perform memory write
+             fill_memory_with_zero:
+	               input s4, MIB_Status 	         ;read in Memory Interface status			
+                    and s4, 01                        ;isolate RDY bit 
+	               sub s4, 01                        ; check to see if RDY bit is set high
+                    jump nz,   fill_memory_with_zero  ;if it isn't, keep on waiting until it is set high
+                    compare mem_addr_0, 02            ;see if values match
+                    jump nz, increase_mem_addr        ;if they don't get byte from memory
+                    compare mem_addr_1, 02            ;see if values match
+                    jump nz,  increase_mem_addr       ;if they don't get byte from memory
+                    compare mem_addr_2, 00            ;see if values match
+                    jump nz,  increase_mem_addr       ;if they don't get byte from memory
+                    load mem_addr_0, 00               ;roll over to beginning of memory
+                    load mem_addr_1, 00               ;roll over to beginning of memory
+                    load mem_addr_2, 00               ;roll over to beginning of memory
+                    jump   done_zeroing_mem           ;jump to end of command		
+             increase_mem_addr :
+                    add mem_addr_0, 01               ;Increment memory address
+                    addcy mem_addr_1, 00             ;Incremetn memory address
+                    addcy mem_addr_2, 00             ;Incremetn memory address
+                    jump next_mem_addr  	        ;if not, increment address
+             done_zeroing_mem :
+	               return
+
+
+             ;================================================================
+             ; routine: display_banner
+             ;       function : Transmits the beginning banner onto the terminal screen:
+             ; ****************************
+             ; *   CECS 460      
+             ; *   Victor Espinoza
+             ; *   Full UART
+             ; *   Due: 11/19/15
+             ; ****************************
+             ;================================================================
+             display_banner: 
+                    call  transmit_top_of_banner     ;transmit asterisks
+                    call  transmit_class             ;transmit class name
+                    call transmit_student_name       ;transmit my name
+                    call transmit_project_name       ;transmit project name
+                    call transmit_due_date           ;transmit due date
+                    call transmit_top_of_banner      ;transmit asterisks
+                    load tx_data , ASCII_CR
+                    call tx_one_byte                 ; transmit CR (Carriage Return)
+                    load tx_data , ASCII_LF
+                    call tx_one_byte                 ; transmit LF (Line Feed)
+ 	               call new_prompt                  ;transmit prompt
+	               return
+
+
+             ;================================================================
+             ; routine: new_prompt
+             ;       function : Transmits the new prompt (*>) whenever a CR or LF chacacter
+             ;                  are received or when the terminal issues a new line command.
+             ;================================================================
+             new_prompt:
+                    load char_counter, 00                      ;zero out the character counter
+                    load tx_data , ASCII_CR
+                    call tx_one_byte                            ; transmit CR (Carriage Return)
+                    load tx_data , ASCII_LF
+                    call tx_one_byte                            ; transmit LF (Line Feed)
+                    load tx_data , ASCII_Asterisk
+                    call tx_one_byte                            ; transmit * (Asterisk)  
+                    load tx_data , ASCII_Greater_Than
+                    call tx_one_byte                            ; transmit >(Greater Than)	
+                    return
+
+
+             ;================================================================
+             ; routine: transmit_top_of_banner
+             ;       function : Transmits the top part of the banner (30 asterisks)
+             ; ******************************
+             ;================================================================
+             transmit_top_of_banner:
+                    load tx_data , ASCII_CR
+                    call tx_one_byte                     ; transmit CR (Carriage Return)
+                    load tx_data , ASCII_LF
+                    call tx_one_byte                     ; transmit LF (Line Feed)
+	               load sF, 1D ;
+             asterisk_loop:
+	               compare sF, 00                       ; check to see if loop is done transmitting
+                    jump z, done_transmitting_asterisks  ; if it is, jump to end of loop
+                    load tx_data , ASCII_Asterisk   
+	               call tx_one_byte                     ; transmit * (Asterisk)  
+                    sub sF, 01                           ; decrement loop counter
+                   JUMP asterisk_loop
+            done_transmitting_asterisks:
+                    return
+
+
+             ;================================================================
+             ; routine: transmit_class
+             ;       function : Transmits the class name (CECS 460)
+             ;================================================================
+             transmit_class:
+                    load tx_data , ASCII_CR
+                    call tx_one_byte                            ; transmit CR (Carriage Return)
+                    load tx_data , ASCII_LF
+                    call tx_one_byte                            ; transmit LF (Line Feed)
+                    load tx_data , ASCII_Asterisk   
+	               call tx_one_byte                            ; transmit * (Asterisk)       
+                    load tx_data , ASCII_Space 
+                    call tx_one_byte                            ; transmit space
+                    load tx_data , ASCII_C_U
+                    call tx_one_byte                            ; transmit C
+                    load tx_data , ASCII_E_U
+                    call tx_one_byte                            ; transmit E
+                    load tx_data , ASCII_C_U
+                    call tx_one_byte                            ; transmit C
+                    load tx_data , ASCII_S_U
+                    call tx_one_byte                            ; transmit S
+                    load tx_data , ASCII_Space 
+                    call tx_one_byte                            ; transmit space
+                    load tx_data , ASCII_4
+                    call tx_one_byte                            ; transmit 4
+                    load tx_data , ASCII_6
+                    call tx_one_byte                            ; transmit 6
+                    load tx_data , ASCII_0
+                    call tx_one_byte                            ; transmit 0
+                    return
+
+
+             ;================================================================
+             ; routine: transmit_student_name
+             ;       function : Transmits the student name (Victor Espinoza)
+             ;================================================================
+             transmit_student_name:
+                    load tx_data , ASCII_CR
+                    call tx_one_byte                            ; transmit CR (Carriage Return)
+                    load tx_data , ASCII_LF
+                    call tx_one_byte                            ; transmit LF (Line Feed)
+                    load tx_data , ASCII_Asterisk   
+	               call tx_one_byte                            ; transmit * (Asterisk)       
+                    load tx_data , ASCII_Space 
+                    call tx_one_byte                            ; transmit space
+                    load tx_data ,  ASCII_V_U
+                    call tx_one_byte                            ; transmit V
+                    load tx_data , ASCII_i
+                    call tx_one_byte                            ; transmit i
+                    load tx_data , ASCII_c
+                    call tx_one_byte                            ; transmit c
+                    load tx_data , ASCII_t
+                    call tx_one_byte                            ; transmit t
+                    load tx_data , ASCII_o
+                    call tx_one_byte                            ; transmit o
+                    load tx_data , ASCII_r
+                    call tx_one_byte                            ; transmit r
+                    load tx_data , ASCII_Space 
+                    call tx_one_byte                            ; transmit space
+                    load tx_data , ASCII_E_U
+                    call tx_one_byte                            ; transmit E
+                    load tx_data , ASCII_s
+                    call tx_one_byte                            ; transmit s
+                    load tx_data , ASCII_p
+                    call tx_one_byte                            ; transmit p
+                    load tx_data , ASCII_i
+                    call tx_one_byte                            ; transmit i
+                    load tx_data , ASCII_n
+                    call tx_one_byte                            ; transmit n
+                    load tx_data , ASCII_o
+                    call tx_one_byte                            ; transmit o
+                    load tx_data , ASCII_z
+                    call tx_one_byte                            ; transmit z
+                    load tx_data , ASCII_a
+                    call tx_one_byte                            ; transmit a
+                    return
+
+
+             ;================================================================
+             ; routine: transmit_project_name
+             ;       function : Transmits the project name (Memory Interface)
+             ;================================================================
+             transmit_project_name:
+                    load tx_data , ASCII_CR
+                    call tx_one_byte                            ; transmit CR (Carriage Return)
+                    load tx_data , ASCII_LF
+                    call tx_one_byte                            ; transmit LF (Line Feed)
+                    load tx_data , ASCII_Asterisk   
+	               call tx_one_byte                            ; transmit * (Asterisk)       
+                    load tx_data , ASCII_Space 
+                    call tx_one_byte                            ; transmit space
+                    load tx_data , ASCII_M_U
+                    call tx_one_byte                            ; transmit M
+                    load tx_data , ASCII_e
+                    call tx_one_byte                            ; transmit e
+                    load tx_data , ASCII_m
+                    call tx_one_byte                            ; transmit m
+                    load tx_data , ASCII_o
+                    call tx_one_byte                            ; transmit o
+                    load tx_data , ASCII_r
+                    call tx_one_byte                            ; transmit r
+                    load tx_data , ASCII_y
+                    call tx_one_byte                            ; transmit y
+                    load tx_data , ASCII_Space 
+                    call tx_one_byte                            ; transmit space
+                    load tx_data , ASCII_I_U
+                    call tx_one_byte                            ; transmit I
+                    load tx_data , ASCII_n
+                    call tx_one_byte                            ; transmit n
+                    load tx_data , ASCII_t
+                    call tx_one_byte                            ; transmit t
+                    load tx_data , ASCII_e
+                    call tx_one_byte                            ; transmit e
+                    load tx_data , ASCII_r
+                    call tx_one_byte                            ; transmit r
+                    load tx_data , ASCII_f
+                    call tx_one_byte                            ; transmit f
+                    load tx_data , ASCII_a
+                    call tx_one_byte                            ; transmit a
+                    load tx_data , ASCII_c
+                    call tx_one_byte                            ; transmit c
+                    load tx_data , ASCII_e
+                    call tx_one_byte                            ; transmit e
+                    return
+
+
+             ;================================================================
+             ; routine: transmit_due_date
+             ;       function : Transmits the project due date (Due: 12/10/15)
+             ;================================================================
+             transmit_due_date:
+                    load tx_data , ASCII_CR
+                    call tx_one_byte                            ; transmit CR (Carriage Return)
+                    load tx_data , ASCII_LF
+                    call tx_one_byte                            ; transmit LF (Line Feed)
+                    load tx_data , ASCII_Asterisk   
+	               call tx_one_byte                            ; transmit * (Asterisk)       
+                    load tx_data , ASCII_Space 
+                    call tx_one_byte                            ; transmit space
+                    load tx_data , ASCII_D_U
+                    call tx_one_byte                            ; transmit D
+                    load tx_data , ASCII_u
+                    call tx_one_byte                            ; transmit u
+                    load tx_data , ASCII_e
+                    call tx_one_byte                            ; transmit e      
+                    load tx_data , ASCII_colon 
+                    call tx_one_byte                            ; transmit : (Colon)     
+                    load tx_data , ASCII_Space 
+                    call tx_one_byte                            ; transmit space
+                    load tx_data , ASCII_1
+                    call tx_one_byte                            ; transmit 1
+                    load tx_data , ASCII_2
+                    call tx_one_byte                            ; transmit 2
+                    load tx_data , ASCII_bslash
+                    call tx_one_byte                            ; transmit / (Backslash)
+                    load tx_data , ASCII_l
+                    call tx_one_byte                            ; transmit l
+                    load tx_data , ASCII_0
+                    call tx_one_byte                            ; transmit 0
+                    load tx_data , ASCII_bslash
+                    call tx_one_byte                            ; transmit / (Backslash)
+                    load tx_data , ASCII_l
+                    call tx_one_byte                            ; transmit l
+                    load tx_data , ASCII_5
+                    call tx_one_byte                            ; transmit 5
+                    return
+
+
+             ;================================================================
+             ; routine: transmit_hometown
+             ;       function : Transmits the student's hometown (Hometown - Porterville, CA)
+             ;================================================================
+             transmit_hometown:
+ 	               call new_prompt                             ; transmit prompt 
+                    load tx_data , ASCII_Space 
+                    call tx_one_byte                            ; transmit space
+                    load tx_data , ASCII_H_U
+                    call tx_one_byte                            ; transmit H
+                    load tx_data , ASCII_o
+                    call tx_one_byte                            ; transmit o
+                    load tx_data , ASCII_m
+                    call tx_one_byte                            ; transmit m
+                    load tx_data , ASCII_e
+                    call tx_one_byte                            ; transmit e
+                    load tx_data , ASCII_t
+                    call tx_one_byte                            ; transmit t
+                    load tx_data , ASCII_o
+                    call tx_one_byte                            ; transmit o
+                    load tx_data , ASCII_w
+                    call tx_one_byte                            ; transmit w
+                    load tx_data , ASCII_n
+                    call tx_one_byte                            ; transmit n
+                    load tx_data , ASCII_Space 
+                    call tx_one_byte                            ; transmit space
+                    load tx_data , ASCII_dash
+                    call tx_one_byte                            ; transmit dash
+                    load tx_data , ASCII_Space 
+                    call tx_one_byte                            ; transmit space
+                    load tx_data , ASCII_P_U
+                    call tx_one_byte                            ; transmit P
+                    load tx_data , ASCII_o
+                    call tx_one_byte                            ; transmit o
+                    load tx_data , ASCII_r
+                    call tx_one_byte                            ; transmit r
+                    load tx_data , ASCII_t
+                    call tx_one_byte                            ; transmit t
+                    load tx_data , ASCII_e
+                    call tx_one_byte                            ; transmit e
+                    load tx_data , ASCII_r
+                    call tx_one_byte                            ; transmit r
+                    load tx_data , ASCII_v
+                    call tx_one_byte                            ; transmit v
+                    load tx_data , ASCII_i
+                    call tx_one_byte                            ; transmit i
+                    load tx_data , ASCII_l
+                    call tx_one_byte                            ; transmit l
+                    load tx_data , ASCII_l
+                    call tx_one_byte                            ; transmit l
+                    load tx_data , ASCII_e
+                    call tx_one_byte                            ; transmit e
+                    load tx_data , ASCII_comma
+                    call tx_one_byte                            ; transmit comma
+                    load tx_data , ASCII_Space
+                    call tx_one_byte                            ; transmit space
+                    load tx_data , ASCII_C_U
+                    call tx_one_byte                            ; transmit C
+                    load tx_data , ASCII_A_U
+                    call tx_one_byte                            ; transmit A
+                    return
+
+
+             ;================================================================
+             ; routine: display_pairty_error
+             ;       function : Informs user of parity error (PARITY ERROR!)
+             ;================================================================
+             display_pairty_error:
+                    load tx_data , ASCII_P_U
+                    call tx_one_byte                            ; transmit P
+                    load tx_data , ASCII_A_U
+                    call tx_one_byte                            ; transmit A
+                    load tx_data , ASCII_R_U
+                    call tx_one_byte                            ; transmit R
+                    load tx_data , ASCII_I_U
+                    call tx_one_byte                            ; transmit I
+                    load tx_data , ASCII_T_U
+                    call tx_one_byte                            ; transmit T
+                    load tx_data , ASCII_Y_U
+                    call tx_one_byte                            ; transmit Y
+                    load tx_data , ASCII_Space
+                    call tx_one_byte                            ; transmit space
+                    load tx_data , ASCII_E_U
+                    call tx_one_byte                            ; transmit E
+                    load tx_data , ASCII_R_U
+                    call tx_one_byte                            ; transmit R
+                    load tx_data , ASCII_R_U
+                    call tx_one_byte                            ; transmit R
+                    load tx_data , ASCII_O_U
+                    call tx_one_byte                            ; transmit O
+                    load tx_data , ASCII_R_U
+                    call tx_one_byte                            ; transmit R
+                    load tx_data , ASCII_exclamation
+                    call tx_one_byte                            ; transmit exclamation
+ 	               call new_prompt                             ; transmit prompt 
+                    return
+
+
+             ;================================================================
+             ; routine: display_overflow_error
+             ;       function : Informs user of overflow error (OVERFLOW ERROR!)
+             ;================================================================
+             display_overflow_error:
+                    load tx_data , ASCII_O_U
+                    call tx_one_byte                            ; transmit O
+                    load tx_data , ASCII_V_U
+                    call tx_one_byte                            ; transmit V
+                    load tx_data , ASCII_E_U
+                    call tx_one_byte                            ; transmit E
+                    load tx_data , ASCII_R_U
+                    call tx_one_byte                            ; transmit R
+                    load tx_data , ASCII_F_U
+                    call tx_one_byte                            ; transmit F
+                    load tx_data , ASCII_L_U
+                    call tx_one_byte                            ; transmit L
+                    load tx_data , ASCII_O_U
+                    call tx_one_byte                            ; transmit O
+                    load tx_data , ASCII_W_U
+                    call tx_one_byte                            ; transmit W
+                    load tx_data , ASCII_Space
+                    call tx_one_byte                            ; transmit space
+                    load tx_data , ASCII_E_U
+                    call tx_one_byte                            ; transmit E
+                    load tx_data , ASCII_R_U
+                    call tx_one_byte                            ; transmit R
+                    load tx_data , ASCII_R_U
+                    call tx_one_byte                            ; transmit R
+                    load tx_data , ASCII_O_U
+                    call tx_one_byte                            ; transmit O
+                    load tx_data , ASCII_R_U
+                    call tx_one_byte                            ; transmit R
+                    load tx_data , ASCII_exclamation
+                    call tx_one_byte                            ; transmit exclamation
+ 	               call new_prompt                             ; transmit prompt 
+                    return
 
 Dependencies:    
 This project was created using the Xilinx ISE Project Navigator Version: 14.7.
