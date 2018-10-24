@@ -1,5 +1,5 @@
-# Lab_5_Cell_RAM
 Project Overview:   
+
 Fully Functional Universal Asynchronous Receiver/Transmitter with ability to store data in Cell RAM using Verilog and Assembly. 
      
 The designed System On Chip is able to communicate with a user via an Universal Asynchronous Receiver Transmitter (UART) interface to receive and transmit data. The SOC is also capable of interfacing to memory. The device that was used to verify the correctness of the SOC was the Digilent Nexys2 circuit board.    
